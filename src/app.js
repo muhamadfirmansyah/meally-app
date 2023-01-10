@@ -34,6 +34,8 @@ export default function app() {
     for (let i = 0; i < seeRecipeButton.length; i++) {
       const element = seeRecipeButton[i];
       element.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         const id = e.currentTarget.getAttribute('data-id');
         renderMealContent(id);
       });
