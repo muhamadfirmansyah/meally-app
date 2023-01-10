@@ -1,0 +1,269 @@
+$color1: #FED049;
+$color2: #CFFDE1;
+$color3: #68B984;
+$color4: #2e4141;
+$color5: #2C2C2C;
+$color6: #FFFFFF;
+$black: #2c2c2c;
+$white: #FFFFFF;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: $color4;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: $black;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: $white;
+}
+
+a {
+    color: $color3;
+    word-break: break-all;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2e4141e5;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+}
+
+body {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: 1fr;
+    background-color: $color4;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+navigation-component {
+    grid-area: 1 / 1 / 2 / 2;
+    border-right: 1px solid $color5;
+    height: 100vh;
+    background-color: $color4;
+    top: 0;
+    position: sticky;
+    padding: 16px 16px 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .app-logo img {
+        aspect-ratio: 1 / 1;
+        width: 64px;
+        height: 64px;
+    }
+    .shuffle-button {
+        width: 56px;
+        height: 56px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        svg {
+            width: 24px;
+            height: 24px;
+            color: $color4;
+        }
+        &:active {
+            background-color: $color1;
+            transform: scale(105%);
+        }
+    }
+    @media screen and (max-width: 420px) {
+        position: fixed;
+        border-right: none;
+        border-bottom: 1px solid $color5;
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+        padding: 16px 16px;
+    }
+}
+
+main-component {
+    grid-area: 1 / 2 / 2 / 9;
+    .content {
+        padding: 48px;
+        height: 100vh;
+        overflow: auto;
+    }
+    .badge {
+        display: inline-block;
+        color: $white;
+        border: 0.15rem solid $white;
+        padding: 7px 14px;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    header {
+        h1 {
+            font-size: 56px;
+            color: $color1;
+            margin-top: 16px;
+            margin-bottom: 32px;
+            line-height: 1.2;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+        }
+    }
+    article {
+        color: $color6;
+        line-height: 1.5;
+        margin-top: 40px;
+        h2 {
+            font-size: 24px;
+            color: $color1;
+            margin-bottom: 16px;
+            margin-top: 40px;
+        }
+        ul {
+            padding-left: 1.5rem;
+            li {
+                margin: 0.5rem 0;
+            }
+        }
+        pre {
+            white-space: pre-wrap;
+            font-size: 16px;
+            font-family: sans-serif;
+            line-height: 2;
+        }
+    }
+    @media screen and (max-width: 910px) {
+        grid-area: 1 / 2 / 2 / 14;
+        .content {
+            padding: 32px 24px;
+        }
+    }
+    @media screen and (max-width: 420px) {
+        grid-area: 1 / 1/ 2 / 14;
+        .content {
+            padding-top: 124px;
+        }
+    }
+}
+
+sidebar-component {
+    grid-area: 1 / 9 / 2 / 14;
+    height: 100vh;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+    .search-form {
+        border-bottom: 1px solid $black;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color4;
+        width: 100%;
+        input {
+            font-size: 16px;
+            display: inline-block;
+            width: 80%;
+            background-color: $white;
+            padding: 16px 16px;
+            border-radius: 32px;
+            outline: none;
+            font-weight: 500;
+            border: none;
+            text-align: center;
+        }
+    }
+    card-list {
+        height: calc(100vh - 83px);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        overflow: auto;
+        .rec-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+            height: 100%;
+            border-bottom: 1px solid $black;
+            &:nth-of-type(2n+1) {
+                border-right: 1px solid $black;
+            }
+            img {
+                object-fit: cover;
+                aspect-ratio: 1 / 1;
+                width: 100%;
+                border-radius: 16px;
+            }
+            h3 {
+                margin-top: 16px;
+                font-size: 24px;
+                color: $color1;
+                text-align: center;
+            }
+            button {
+                display: inline-block;
+                width: 100%;
+                margin-top: 16px;
+                border: 1px solid $black;
+                border-radius: 32px;
+                padding: 12px;
+                color: $white;
+                font-size: 14px;
+                font-weight: bold;
+                cursor: pointer;
+                background-color: $black;
+                opacity: 0.9;
+                &:hover {
+                    opacity: 1;
+                    transform: scale(105%);
+                }
+                &:active {
+                    transform: scale(0.9);
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 910px) {
+        display: none;
+    }
+}
